@@ -2,6 +2,9 @@
  * Globals
  */
 
+
+
+
 /* Links */
 a,
 a:focus,
@@ -103,4 +106,39 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
+}
+
+
+/* Utilisation de la police "regular" */
+@font-face {
+font-family: "LobsterTwo";
+font-weight: normal;
+src: url('fonts/LobsterTwo-Regular.otf');
+}
+ 
+/* Utilisation de la police "bold" */
+@font-face {
+font-family: "LobsterTwo-Bold";
+font-weight: bold;
+src: url("fonts/LobsterTwo-Bold.otf");
+}
+
+/* Utilisation de la police "boldItalic" */
+@font-face {
+font-family: "LobsterTwo-BoldItalic";
+font-weight: bold;
+font-style: italic;
+src: url("fonts/LobsterTwo-BoldItalic.otf");
+}
+
+/* Utilisation de la police "italic" */
+@font-face {
+font-family: "LobsterTwo-Italic";
+font-weight: normal;
+font-style: italic;
+src: url("fonts/LobsterTwo-Italic.otf");
+}
+
+body {
+  font-family: 'LobsterTwo',"-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue","Arial","Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" ;
 }
