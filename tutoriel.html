@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="author" content="Romain BOYRIE">
+<title>Optimisation et maîtrise en programmation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/*! Asciidoctor Tabs | Copyright (c) 2018-present Dan Allen | MIT License */
+.tabs {
+    margin-bottom: 1.25em;
+}
+
+.tablist > ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tablist > ul li {
+    align-items: center;
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 0.25em 1em;
+    position: relative;
+}
+
+.tablist > ul li:focus-visible {
+    outline: none;
+}
+
+.tablist.ulist,
+.tablist.ulist > ul li {
+    margin: 0;
+}
+
+.tablist.ulist > ul li + li {
+    margin-left: 0.25em;
+}
+
+.tabs .tablist li::after {
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+}
+
+.tabs.is-loading .tablist li:not(:first-child),
+.tabs:not(.is-loading) .tablist li:not(.is-selected) {
+    background-color: #f5f5f5;
+}
+
+.tabs.is-loading .tablist li:first-child::after,
+.tabs:not(.is-loading) .tablist li.is-selected::after {
+    background-color: #fff;
+}
+
+/*
+.tabs:not(.is-loading) .tablist li,
+.tabs:not(.is-loading) .tablist li::after {
+  transition: background-color 200ms ease-in-out;
+}
+*/
+
+.tablist > ul p {
+    line-height: inherit;
+    margin: 0;
+}
+
+.tabpanel {
+    background-color: #fff;
+    padding: 1.25em;
+}
+
+.tablist > ul li,
+.tabpanel {
+    border: 1px solid #dcdcdc;
+}
+
+.tablist > ul li {
+    border-bottom: 0;
+}
+
+.tabs.is-loading .tabpanel + .tabpanel,
+.tabs:not(.is-loading) .tabpanel.is-hidden {
+    display: none;
+}
+
+.tabpanel > :first-child {
+    margin-top: 0;
+}
+
+/* #content is a signature of the Asciidoctor standalone HTML output */
+#content .tabpanel > :last-child,
+#content .tabpanel > :last-child > :last-child,
+#content .tabpanel > :last-child > :last-child > li:last-child > :last-child {
+    margin-bottom: 0;
+}
+
+.tablecontainer {
+    overflow-x: auto;
+}
+
+#content .tablecontainer {
+    margin-bottom: 1.25em;
+}
+
+#content .tablecontainer > table.tableblock {
+    margin-bottom: 0;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Optimisation et maîtrise en programmation</h1>
+<div class="details">
+<span id="author" class="author">Romain BOYRIE</span><br>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_écrire_du_code_propre">Écrire du code propre</a>
+<ul class="sectlevel2">
+<li><a href="#_se_limiter_au_commentaire_utile">Se limiter au commentaire utile</a></li>
+<li><a href="#_une_fonction_ne_fait_quune_chose_mais_bien">Une fonction ne fait qu&#8217;une chose, mais bien</a></li>
+<li><a href="#_la_programmation_objet_permet_dencapsuler_la_complexité">La programmation objet permet d&#8217;encapsuler la complexité</a></li>
+<li><a href="#_donner_des_noms_sensés_aux_variables_et_aux_paramètres">Donner des noms sensés aux variables et aux paramètres</a></li>
+<li><a href="#_indenter_votre_code">Indenter votre code</a></li>
+</ul>
+</li>
+<li><a href="#_dans_le_code_python">Dans le code python</a>
+<ul class="sectlevel2">
+<li><a href="#_supprimer_les_variables_non_utilisées">Supprimer les variables non-utilisées</a></li>
+<li><a href="#_ne_pas_écrire_des_exceptions_sans_un_type_derreur">Ne pas écrire des exceptions sans un type d&#8217;Erreur</a></li>
+<li><a href="#_éviter_décrire_des_boucles_infinies">Éviter d&#8217;écrire des boucles infinies</a></li>
+<li><a href="#_écrire_des_tests_unitaires">Écrire des tests unitaires</a></li>
+<li><a href="#_utiliser_mypy_pour_typer_les_variables">Utiliser mypy pour typer les variables</a></li>
+<li><a href="#_indenter_son_code_avec_la_biblio_black">Indenter son code avec la biblio black</a></li>
+<li><a href="#_ne_pas_coder_une_shallow_copy_si_une_deep_copy_est_nécessaire">Ne pas coder une shallow copy, si une deep copy est nécessaire.</a></li>
+</ul>
+</li>
+<li><a href="#_dans_le_code_sql">Dans le code SQL</a>
+<ul class="sectlevel2">
+<li><a href="#_bien_typer_les_colonnes_en_fonction_de_la_data">Bien typer les colonnes en fonction de la data</a></li>
+<li><a href="#_ne_pas_insérer_dorder_by_si_ce_nest_pas_utile">Ne pas insérer d&#8217;Order By si ce n&#8217;est pas utile</a></li>
+</ul>
+</li>
+<li><a href="#_dans_le_hardware">Dans le hardware</a>
+<ul class="sectlevel2">
+<li><a href="#_mesure_de_la_consommation_du_programme">Mesure de la consommation du programme</a></li>
+</ul>
+</li>
+<li><a href="#_la_posture_du_développeur_sans_courbature">La posture du développeur sans courbature</a>
+<ul class="sectlevel2">
+<li><a href="#_éviter_de_décoller_les_mains_du_clavier">Éviter de décoller les mains du clavier</a></li>
+<li><a href="#_apprendre_une_disposition_clavier_ergonomique">Apprendre une disposition clavier ergonomique</a></li>
+</ul>
+</li>
+<li><a href="#_utilisation_dun_outil_danalyse_statique_du_code">Utilisation d&#8217;un outil d&#8217;analyse statique du code</a>
+<ul class="sectlevel2">
+<li><a href="#_qodana">Qodana</a></li>
+<li><a href="#_sonarlint">Sonarlint</a></li>
+</ul>
+</li>
+<li><a href="#_conclusion">Conclusion</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ce document se veut une compilation d&#8217;un ensemble de conseils pour
+développer en donnant votre
+potentiel maximum, en Python, SQL et dans
+le développement d&#8217;application cloud.</p>
+</div>
+<div class="paragraph">
+<p>De plus une partie s&#8217;arrêtera sur la posture
+du développeur, avec des astuces et des
+conseils sur l&#8217;ergonomie du poste de travail.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_écrire_du_code_propre">Écrire du code propre</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_se_limiter_au_commentaire_utile">Se limiter au commentaire utile</h3>
+<div class="paragraph">
+<p>Il y a les pros et les opposants aux
+commentaires, mais dans l&#8217;ensemble,
+lorsque vous êtes nouveaux sur un projet
+la lecture des commentaires facilite
+la compréhension du code et est moteur
+dans l&#8217;intégration dans l&#8217;équipe.</p>
+</div>
+<div class="paragraph">
+<p>Le dosage du commentaire reste un
+élément essentiel de son utilité. En
+effet, le commentaire sert à compenser
+la complexité du code. Par contre,
+il devient pesant de lire des commentaires verbeux, si la lecture du code est suffisamment claire.</p>
+</div>
+<div class="paragraph">
+<p>Bien qu&#8217;il y ait une différence
+d&#8217;appréciation de l&#8217;utilité
+du commentaire, entre un junior et
+un sénior, une règle de base peut servir
+à décider quand insérer un commentaire,
+mais c&#8217;est à vous de la définir, bien que
+nous donnions quelques pistes ci-dessous.</p>
+</div>
+<div class="paragraph">
+<p>Outre le fait qu&#8217;ajouter une description
+à chaque fonction (en Python c&#8217;est une docstring), ajouter un commentaire
+ne doit pas venir pallier un déficit de
+sens dans le nommage des variables. Sachez seulement que vos commentaires peuvent intégrer vos tests unitaires et donc être particulièrement utiles dans les évolutions/maintenances de votre code, surtout si ce n&#8217;est pas vous qui le modifiez.</p>
+</div>
+<div class="paragraph">
+<p>Enfin, la construction du code, le choix d&#8217;un design-pattern, le bon
+nommage des fonctions, des paramètres
+et des variables pourraient rendre
+inutiles les commentaires, exception faite que les commentaires vous aiderons souvent à écrire une documentation étayée, etc.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_une_fonction_ne_fait_quune_chose_mais_bien">Une fonction ne fait qu&#8217;une chose, mais bien</h3>
+<div class="paragraph">
+<p>Voilà une règle qui élimine la complexité et permet de calibrer
+sa fonction à son action.</p>
+</div>
+<div class="paragraph">
+<p>Dans l&#8217;exemple suivant, le code est présenté soit dans une forme développé, soit dans une forme factorisé.</p>
+</div>
+<div class="paragraph">
+<p>Si l&#8217;appel à la fonction reste identique, chaque étape du programme
+fait appel à une seule fonction.</p>
+</div>
+<div class="paragraph">
+<p>Bien que le code comporte plus de
+ligne quand on le factorise, il sera plus facile à debuguer et à maintenir.</p>
+</div>
+<div class="listingblock">
+<div class="title">Code développé</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">string</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">encryption</span>(message, cypher):
+    <span style="color:#D42"><span style="color:black">&quot;&quot;&quot;</span><span>Renvoie un message chiffré</span><span style="color:black">&quot;&quot;&quot;</span></span>
+    char_list = string.printable
+    char_dict = {y:x <span style="color:#080;font-weight:bold">for</span> x,y <span style="color:#080;font-weight:bold">in</span> <span style="color:#369;font-weight:bold">enumerate</span>(char_list)}
+    modulo = <span style="color:#369;font-weight:bold">len</span>(char_list)
+    crypted_message = []
+    <span style="color:#080;font-weight:bold">for</span> char <span style="color:#080;font-weight:bold">in</span> message:
+        token = char_list[(char_dict[char] + cypher) % modulo]
+        crypted_message.append(token)
+    <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>.join(crypted_message)
+
+&gt;&gt;&gt; encryption(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">J'adore Python</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">123456789</span>)
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">yV</span><span style="color:#b0b">\x0c</span><span style="color:#D20">2dg3@Eni6dc</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Code factorisé</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">string</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">get_tables</span>():
+    <span style="color:#D42"><span style="color:black">&quot;&quot;&quot;</span><span>Retourne les tables de valeurs des caractères</span><span style="color:black">&quot;&quot;&quot;</span></span>
+    ordered_chars = string.printable
+    chars_dictionary = {y:x <span style="color:#080;font-weight:bold">for</span> x,y <span style="color:#080;font-weight:bold">in</span> <span style="color:#369;font-weight:bold">enumerate</span>(ordered_chars)}
+    length_of_chars_list = <span style="color:#369;font-weight:bold">len</span>(ordered_chars)
+    <span style="color:#080;font-weight:bold">return</span> ordered_chars, chars_dictionary, length_of_chars_list
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">encoder</span>(character_to_encrypt, shift):
+    <span style="color:#D42"><span style="color:black">&quot;&quot;&quot;</span><span>Retourne le caractère encodé</span><span style="color:black">&quot;&quot;&quot;</span></span>
+    chars_list, chars_dict, length = get_tables()
+    crypted_char = chars_list[(chars_dict[character_to_encrypt] + shift) % length]
+    <span style="color:#080;font-weight:bold">return</span> crypted_char
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">encryption</span>(message, cypher):
+    <span style="color:#D42"><span style="color:black">&quot;&quot;&quot;</span><span>Retourne un message en le chiffrant</span><span style="color:black">&quot;&quot;&quot;</span></span>
+    crypted_message = []
+    <span style="color:#080;font-weight:bold">for</span> char <span style="color:#080;font-weight:bold">in</span> message:
+        token = encoder(char, cypher)
+        crypted_message.append(token)
+    <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>.join(crypted_message)
+
+&gt;&gt;&gt; encryption(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">J'adore Python</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">123456789</span>)
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">yV</span><span style="color:#b0b">\x0c</span><span style="color:#D20">2dg3@Eni6dc</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le code s&#8217;appelle de la même façon et
+retourne le même résultat, mais la lecture est facilitée par la simplicité de chaque fonction.</p>
+</div>
+<div class="paragraph">
+<p>Si une fonction devient trop complexe, réduisez-la en factorisant. Factoriser revient souvent à ajouter des fonctions ou de nouveaux paramètres aux fonctions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_la_programmation_objet_permet_dencapsuler_la_complexité">La programmation objet permet d&#8217;encapsuler la complexité</h3>
+<div class="paragraph">
+<p>Quand un programme regroupe plusieurs corps, on peut alors parler du concept d&#8217;objets. Les objets sont des instanciations de classes ou des interfaces, présentant
+des caractéristiques qu&#8217;ils peuvent
+hériter et partager avec un autre objet mère ou fille.</p>
+</div>
+<div class="paragraph">
+<p>Il existe également des classes abstraites, dont les valeurs ne peuvent
+pas être instantiées mais elles servent à l&#8217;implémentation de fonctionnalités.</p>
+</div>
+<div class="paragraph">
+<p>Les objets peuvent intéragir les uns avec les autres, suivant deux types
+d&#8217;actions, soit l&#8217;agrégation, soit
+la compositon.</p>
+</div>
+<div class="paragraph">
+<p>Des objets sont nées les design pattern (ou DP), sorte de modèle encapsulant la complexité du code informatique.</p>
+</div>
+<div class="paragraph">
+<p>Il existe un DP pour chaque problématique de programmation objet.
+Ils peuvent être combinés et apportent beaucoup d&#8217;élégance à l&#8217;écriture du code en permettant d&#8217;en masquer la complexité.</p>
+</div>
+<div class="paragraph">
+<p>Ils sont classés en trois grandes familles :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Les Creational Patterns</p>
+</li>
+<li>
+<p>Les Structural Patterns</p>
+</li>
+<li>
+<p>Les Behavioral Patterns</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Si vous souhaitez commencer d&#8217;utiliser les DP en Python, je vous conseille ce <a href="https://refactoring.guru/design-patterns">site web</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_donner_des_noms_sensés_aux_variables_et_aux_paramètres">Donner des noms sensés aux variables et aux paramètres</h3>
+<div class="paragraph">
+<p>Sans renverser la table, tout le monde s&#8217;accordera à dire que la lecture
+du code est simplifié lorsque les variables ne sont pas justes des lettres,
+à plus forte raison si les noms couvrent le rôle de la variable dans l&#8217;application.</p>
+</div>
+<div class="paragraph">
+<p>Bien qu&#8217;en python, l&#8217;interpréteur soit fortement typé (nul besoin de définir les types de vos variables), il peut être une bonne idée de terminer le nom de votre
+variable par son type.</p>
+</div>
+<div class="paragraph">
+<p>Bien sûr, vous pourrez aller plus loin en déclarant le type de la variable, comme
+dans l&#8217;exemple ci-dessous, présentant un mix des solutions possibles en Python :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#080;font-weight:bold">from</span> <span style="color:#B44;font-weight:bold">io</span> <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">TextIOWrapper</span>
+filename_str: str = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my_file.csv</span><span style="color:#710">&quot;</span></span>
+<span style="color:#369;font-weight:bold">file</span>: TextIOWrapper = <span style="color:#369;font-weight:bold">open</span>(filename_str, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r</span><span style="color:#710">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;intérêt de la déclaration du type n&#8217;est pas dénué de tout sens, même si cela
+représente un effort supplémentaire, cela peut permettre de contrôler la
+présence d&#8217;un éventuel bug, notamment avec la bibliothèque mypy en Python.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_indenter_votre_code">Indenter votre code</h3>
+<div class="paragraph">
+<p>Une des forces du langage Python est
+de rendre superflue les points virgules de fin
+de ligne ou les accolades des fonctions, lesquelles sont partout dans d&#8217;autres langages, tels que le C ou Java.</p>
+</div>
+<div class="paragraph">
+<p>C&#8217;est par l&#8217;indentation du code que
+l&#8217;interpréteur Python comprend ce qu&#8217;il
+doit faire.</p>
+</div>
+<div class="paragraph">
+<p>Pour nous autre codeur, l&#8217;indentation
+est souvent le paradigme d&#8217;une
+meilleure compréhension du code.</p>
+</div>
+<div class="paragraph">
+<p>Aujourd&#8217;hui, il y a des outils pour
+indenter le code automatiquement, dont
+le principal avantage est d&#8217;éviter au
+codeur de retenir toutes les règles du
+langage, lesquelles peuvent être
+fastidieuses à apprendre.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dans_le_code_python">Dans le code python</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_supprimer_les_variables_non_utilisées">Supprimer les variables non-utilisées</h3>
+<div class="paragraph">
+<p>Durant le développement, le codeur teste beaucoup
+d&#8217;élément et tout le monde n&#8217;utilise pas un
+debugger dans son IDE. En fait, les raisons sont
+nombreuses, pour lesquelles peuvent apparaître
+des variables inutiles quand le code évolue,
+même normalement.</p>
+</div>
+<div class="paragraph">
+<p>On imagine aisément que les variables
+inutilisés, sont, comme le code mort, un frein
+à la compréhension du code. Par conséquent,
+tout codeur doit passer un peu de temps pour
+passer le code en revue et éliminer ce qui
+n&#8217;est plus utile au programme.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ne_pas_écrire_des_exceptions_sans_un_type_derreur">Ne pas écrire des exceptions sans un type d&#8217;Erreur</h3>
+<div class="paragraph">
+<p>Attraper des exceptions, en Python, représente
+la voie royale pour qu&#8217;un programme s&#8217;exécute
+malgré tout ce qui peut arriver au moment
+de l&#8217;exécution.</p>
+</div>
+<div class="paragraph">
+<p>La problématique des exceptions offre un
+spectre large de cas. Il suffit pour s&#8217;en
+convaincre de jeter un œil dans la documentation
+de Python, <a href="https://zealdocs.org/">Le logiciel Zeal</a> vous sera,
+en ce sens, un précieux atout
+et vous permettra de l&#8217;avoir toujours avec vous,
+hors-ligne.</p>
+</div>
+<div class="listingblock">
+<div class="title">Exemple de traitement des exceptions</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#080;font-weight:bold">try</span>:
+    <span style="color:#080;font-weight:bold">with</span> <span style="color:#369;font-weight:bold">open</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">file.txt</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">as</span> <span style="color:#369;font-weight:bold">file</span>:
+        content = <span style="color:#369;font-weight:bold">file</span>.read()
+<span style="color:#080;font-weight:bold">except</span> FileNotFoundError <span style="color:#080;font-weight:bold">as</span> e:
+    print(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Le fichier n'existe pas : </span><span style="color:#710">&quot;</span></span>, e)
+<span style="color:#080;font-weight:bold">finally</span>:
+    <span style="color:#080;font-weight:bold">with</span> <span style="color:#369;font-weight:bold">open</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">file.txt</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">as</span> <span style="color:#369;font-weight:bold">file</span>:
+        <span style="color:#369;font-weight:bold">file</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World!</span><span style="color:#710">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rappelez-vous que vous écrivez du code, aussi
+pour qu&#8217;il soit lisible et compris par d&#8217;autres
+codeurs. Choisir la bonne exception ajoute
+un élément de compréhension sur l&#8217;objectif du
+code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_éviter_décrire_des_boucles_infinies">Éviter d&#8217;écrire des boucles infinies</h3>
+<div class="paragraph">
+<p>Bien que nos systèmes soient multi-tâches, les boucles infinies
+sont toujours considérées comme des
+bugs par les programmeurs.</p>
+</div>
+<div class="paragraph">
+<p>Des boucles while telles que :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#080;font-weight:bold">while</span> <span style="color:#069">True</span>:
+    (action code)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ou même encore :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#080;font-weight:bold">while</span> <span style="color:#00D">1</span> == <span style="color:#00D">1</span>:
+    (action code)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sont détestables aux yeux de tout
+codeur avec un minimum d&#8217;expérience.
+Il est donc important de toujours
+prendre la peine d&#8217;écrire des
+tests cohérents et sensés, même lors
+de la phase
+de développement d&#8217;un programme, où
+de nombreux tests sont réalisés. Cela
+réduira la possibilité d&#8217;oublier une boucle infinie dans le code final.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_écrire_des_tests_unitaires">Écrire des tests unitaires</h3>
+<div class="paragraph">
+<p>Selon mon propre avis, les tests
+unitaires sont la partie la moins
+amusante de l&#8217;écriture d&#8217;un programme.
+Non seulement, ils demandent un certain
+effort pour être trouvés, mais en plus, choisir la bonne solution technique parmi les
+différents produits existants est une gageure.</p>
+</div>
+<div class="paragraph">
+<p>Je pense que ce n&#8217;est pas pour rien si
+testeur de programme est un métier. Toutefois, n&#8217;oublions pas que leur
+automatisation
+représente un gage de plus grande stabilité
+du programme, face aux défis que
+représente le développement en équipe,
+Agile la plupart du temps.</p>
+</div>
+<div class="paragraph">
+<p>Parmi les différentes solutions techniques, en Python,
+vous trouverez une implémentation
+dans la librairie standard, à travers
+la fonctionnalité <a href="https://docs.python.org/3/library/doctest.html">doctest</a>, que vous
+pourrez également utiliser, et plus encore avec la bibliothèque standard <a href="https://docs.python.org/3/library/unittest.html">unittest</a> ou la
+bibliothèque tierce <a href="https://docs.pytest.org/en/7.4.x/contents.html">pytest</a>.</p>
+</div>
+<div class="paragraph">
+<p>Nous vous avons présenté les plus importantes, mais un tour d&#8217;horizon des
+solutions existantes est disponibles en cliquant sur ce
+<a href="https://wiki.python.org/moin/PythonTestingToolsTaxonomy">lien</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_utiliser_mypy_pour_typer_les_variables">Utiliser mypy pour typer les variables</h3>
+<div class="paragraph">
+<p>Bien que Python possède un interprétateur muni du <a href="https://fr.wikipedia.org/wiki/Duck_typing">duck typing</a>, cela aurait pu le conditionner au rang
+des langages idéaux pour le prototypage, mais pas assez
+sûrs pour des phases de production.</p>
+</div>
+<div class="paragraph">
+<p>Toutefois, il est possible d&#8217;utiliser les types, explicitement dans le code.
+Bien sûr, l&#8217;interpréteur n&#8217;est pas directement influencé
+par vos annotations, mais une bibliothèque
+vous aidera à déterminer la cohérence des types,
+à travers les fonctions du code :
+il s&#8217;agit de <a href="https://www.mypy-lang.org/examples.html">mypy</a>.</p>
+</div>
+<div class="paragraph">
+<p>Mypy analyse les annotations sur les variables et
+permet de les contrôler. Écrire
+du code en typant vos variables vous permettra d&#8217;écrire
+du code de meilleure qualité et plus robuste aux pannes.</p>
+</div>
+<div class="paragraph">
+<p>Toutefois, pour aller plus loin que mypy, il sera
+nécessaire de conditionner l&#8217;interpréteur,
+pour qu&#8217;il tienne compte des annotations. Cela peut
+passer par le test du type des variables au moment de
+l&#8217;exécution.</p>
+</div>
+<div class="paragraph">
+<p>Python sera donc, plus verbeux, mais le programme
+ne s&#8217;exécutera que dans des cas précis, ce qui
+permet d&#8217;exclure les erreurs en bornant le programme.</p>
+</div>
+<div class="paragraph">
+<p>Pour démarrer avec mypy, vous pouvez tester le type de
+la variable en suivant la fonction comme décrit en
+suivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python"><span style="color:#777"># reveal.py</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">math</span>
+reveal_type(math.pi)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">mypy reveal.py
+/home/user/project/.venv/bin/python -m mypy reveal.py
+reveal.py:3: note: Revealed type is &quot;builtins.float&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La qualité de vos programmes sera bien meilleure grâce
+à mypy et vous pourrez ainsi augmenter la complexité
+des processus, sans être à la peine sur la gestion des
+bugs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_indenter_son_code_avec_la_biblio_black">Indenter son code avec la biblio black</h3>
+<div class="paragraph">
+<p>Python est un langage dont la syntaxe est épurée, grâce
+à des règles sur l&#8217;indentation du code. L&#8217;interpréteur
+comprend le retour à la ligne et l&#8217;indentation, là
+où un langage comme le C exige des points-virgules et
+des accolades.</p>
+</div>
+<div class="paragraph">
+<p>Toutefois, les règles de l&#8217;interpréteur ne suffisent
+pas pour qu&#8217;un code en Python soit lisible. C&#8217;est pour y
+parvenir que la règle <a href="https://peps.python.org/pep-0008/">PEP8</a>
+a été écrite par
+des développeurs de Python : Guido van Rossum, Barry Warsaw,
+Alyssa Coghlan.</p>
+</div>
+<div class="paragraph">
+<p>De nombreux IDE intègre déjà les règles PEP8 et
+vous permettront de formatter votre code en un clic.
+Si vous n&#8217;avez pas d&#8217;IDE sous la main, vous pourrez utiliser
+la bibliothèque <a href="https://pypi.org/project/black/">Black</a>.</p>
+</div>
+<div class="paragraph">
+<p>Il suffit de lancer la commande suivante pour le fichier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">pip install black
+python -m black {source_file_or_directory}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cette bibliothèque étant compatible avec jupyter, vous
+pourrez l&#8217;utiliser dans tous vos usages du code Python.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ne_pas_coder_une_shallow_copy_si_une_deep_copy_est_nécessaire">Ne pas coder une shallow copy, si une deep copy est nécessaire.</h3>
+<div class="paragraph">
+<p>La copie d&#8217;un objet, en informatique, peut signifier la copie
+d&#8217;une référence ou d&#8217;une valeur.
+Le terme exact est une shallow copy (copie peu profonde) pour
+la copie de la référence en
+mémoire, et deep copy (copie profonde) pour une copie de la
+valeur de l&#8217;objet.</p>
+</div>
+<div class="paragraph">
+<p>Concrètement, cette différence peut entraîner des comportements
+anormaux dans un
+programme, où l&#8217;on déplace des données avant de les modifier.
+En effet, la copie
+peu profonde attribut la position en mémoire d&#8217;une variable à
+une autre variable.
+Le comportement est comme suit :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">&gt;&gt;&gt; a = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]
+&gt;&gt;&gt; b = a
+&gt;&gt;&gt; a.pop()
+&gt;&gt;&gt; print(b)
+[<span style="color:#00D">1</span>, <span style="color:#00D">2</span>]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ce comportement est dû à la copie des références de a dans
+b et non pas des valeurs de a.</p>
+</div>
+<div class="paragraph">
+<p>Toutefois, une copie peu profonde pourrait être utilisée
+pour mettre à jour une variable à
+partir d&#8217;une seconde variable. Pour choisir entre les deux
+modes de copie, le module copy de
+Python, contient une fonction copy, laquelle retourne une
+copie peu profonde. De plus ce module
+contient une fonction deepcopy, laquelle retourne une
+copie profonde d&#8217;un objet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">&gt;&gt;&gt; <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">copy</span>
+&gt;&gt;&gt; a = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]
+&gt;&gt;&gt; b = copy.deepcopy(a)
+&gt;&gt;&gt; a.pop()
+&gt;&gt;&gt; print(b)
+[<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dans_le_code_sql">Dans le code SQL</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bien_typer_les_colonnes_en_fonction_de_la_data">Bien typer les colonnes en fonction de la data</h3>
+<div class="paragraph">
+<p>Il existe beaucoup de types différents pour catégoriser les
+données suivant les usages qu&#8217;elles nécessitent. Le stockage
+de certaines données consomme plus d&#8217;octet que pour d&#8217;autres
+données.
+Cela peut avoir un impact plus grand lorsque l&#8217;on stocke des
+blobs ou simplement quand le nombre de lignes dépasse le million.</p>
+</div>
+<div class="paragraph">
+<p>Dès lors que le prix du stockage dépend de la taille des tables,
+il est bon pour le portefeuille de typer les champs au plus
+près du type de data représenté par les champs. Cela veut
+dire typer un booléen en booléen et non en integer, entre
+autre. Les économies dans les big datas peuvent être
+colossaux, à cette échelle de valeur le nombre de ligne
+peut atteindre le milliard et le gain de poids
+d&#8217;un booléen à un integer est d&#8217;environ 800%.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ne_pas_insérer_dorder_by_si_ce_nest_pas_utile">Ne pas insérer d&#8217;Order By si ce n&#8217;est pas utile</h3>
+<div class="paragraph">
+<p>Lorsqu&#8217;une requête est réalisée dans un test,
+il est souvent pratique d&#8217;ordonner les résultats
+suivant une colonne, ou pour mettre des valeurs
+nulles en évidence. Ce tri s&#8217;effectue à la fin
+de la requête, mais il rajoute une quantité non
+négligeable de calcul au cours de l&#8217;exécution.</p>
+</div>
+<div class="paragraph">
+<p>En règle générale, les données ne sont qu&#8217;en
+vrac dans les tables et dans les vues également.
+Il n&#8217;y a que très peu souvent une nécessité
+de les ordonner.</p>
+</div>
+<div class="paragraph">
+<p>Compte-tenu que la facturation s&#8217;applique en comptant
+la quantité de data traitées par l&#8217;utilisateur,
+la commande order by est à utiliser en bonne
+intelligence avec les besoins réels de votre ingénierie
+des données.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dans_le_hardware">Dans le hardware</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_mesure_de_la_consommation_du_programme">Mesure de la consommation du programme</h3>
+<div class="paragraph">
+<p>Après l&#8217;optimisation d&#8217;un programme, l&#8217;équilibre doit-être trouvé avec
+les ressources allouées. Cependant, les consommables d&#8217;un programme
+sont mesurables donc, trouver une concordance reste un objectif
+atteignable.</p>
+</div>
+<div class="paragraph">
+<p>Les paramètres d&#8217;un programme sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Le temps d&#8217;exécution</p>
+</li>
+<li>
+<p>La mémoire utilisée</p>
+</li>
+<li>
+<p>L&#8217;espace disque utilisé</p>
+</li>
+<li>
+<p>Le nombre de cœurs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Si l&#8217;influence du code est grande, le type de processus peut à
+lui seul définir une ressource nécessaire. Toutefois, il peut
+y avoir des paramètres incompressibles suivant les cas, comme
+le nombre maximum d&#8217;appels simultanés, à un serveur, lequel
+peut ralentir l&#8217;exécution du programme à une durée que l&#8217;on ne
+peut réduire.</p>
+</div>
+<div class="sect3">
+<h4 id="_réduire_le_temps_dexécution">Réduire le temps d&#8217;exécution</h4>
+<div class="paragraph">
+<p>Les pistes pour réduire le temps d&#8217;exécution sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simplifier la complexité du programme</p>
+</li>
+<li>
+<p>Analyser et optimiser le processus de chaque fonction</p>
+</li>
+<li>
+<p>Opter pour du multithreading ou du multiprocessing</p>
+</li>
+<li>
+<p>Prendre des bibliothèques déjà optimisées pour vos opérations</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_réduire_la_consommation_de_mémoire">Réduire la consommation de mémoire</h4>
+<div class="paragraph">
+<p>Les pistes pour réduire la consommation de mémoire sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>L&#8217;écriture sur le disque</p>
+</li>
+<li>
+<p>La destruction des variables inutiles</p>
+</li>
+<li>
+<p>La compression des données</p>
+</li>
+<li>
+<p>Le format des données</p>
+</li>
+<li>
+<p>Le nombre de bibliothèques</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_localiser_les_serveurs_au_plus_des_clients">Localiser les serveurs au plus des clients</h4>
+<div class="paragraph">
+<p>Déployer un serveur de service cloud au plus près des
+utilisateurs du service a beaucoup d&#8217;avantage en
+termes de résistance aux pannes ou pour la mise
+en conformité réglementaire.</p>
+</div>
+<div class="paragraph">
+<p>Notons simplement que, sous un axe d&#8217;optimisation,
+le temps de latence sera réduit, donc la
+proximité du serveur
+améliorera sensiblement l&#8217;expérience utilisateur.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_réserver_au_flux_uniquement_les_data_utilisées_par_le_client">Réserver au flux uniquement les data utilisées par le client</h4>
+<div class="paragraph">
+<p>Le transfert de données se comptant en multiple d&#8217;octet,
+un levier d&#8217;amélioration, qui compte pour beaucoup est de s&#8217;assurer que les données
+envoyées au client lui sont vraiment nécessaires.</p>
+</div>
+<div class="paragraph">
+<p>De la même façon, il sera sans doute utile de bien
+choisir les opérations faites sur le terminal du
+client et les opérations calculées par le serveur.</p>
+</div>
+<div class="paragraph">
+<p>Cela entre en résonance avec l&#8217;architecture de votre
+programme et devrait être pensé au moment de sa
+conception, car les impacts sont nombreux en
+terme d&#8217;usage.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_la_posture_du_développeur_sans_courbature">La posture du développeur sans courbature</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_éviter_de_décoller_les_mains_du_clavier">Éviter de décoller les mains du clavier</h3>
+<div class="paragraph">
+<p>Pour bien coder, une posture détendue est
+primordiale.
+La posture idéale est celle qui entraîne le moins
+de mouvement des épaules. De la sorte, elles pourront
+rester détendues.</p>
+</div>
+<div class="paragraph">
+<p>Garder vos coudes en appuie sur votre bureau, ou sur les appuie-coudes de
+votre fauteuil, vous permettra de détendre vos épaules.</p>
+</div>
+<div class="paragraph">
+<p>Toutefois, pour protéger vos poignets, vous aurez
+besoin, eux-aussi de les reposer, mais en utilisant un repose poignet.</p>
+</div>
+<div class="sect3">
+<h4 id="_vim">VIM</h4>
+<div class="paragraph">
+<p>Utiliser un plugin VIM dans votre IDE et apprendre
+quelques raccourcis clavier, vous permettront de vous
+passer de la souris pour vous déplacer dans votre environnement de développement intégré (IDE) tout en réalisant
+des tâches diverses comme le copier/coller, la
+recherche/remplacement de suite de caractère, etc.</p>
+</div>
+<div class="paragraph">
+<p>Vous pourrez l&#8217;installer sur PyCharm en suivant cette <a href="https://www.jetbrains.com/help/pycharm/using-product-as-the-vim-editor.html">documentation</a>,
+ou sur VSCode avec cette autre <a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">documentation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_apprendre_une_disposition_clavier_ergonomique">Apprendre une disposition clavier ergonomique</h3>
+<div class="sect3">
+<h4 id="_bépo">BÉPO</h4>
+<div class="paragraph">
+<p>Pour aller plus loin dans l&#8217;ergonomie du clavier,
+il est avantageux de changer pour une disposition
+clavier plus ergonomique, car
+l&#8217;AZERTY n&#8217;est pas conçue pour être ergonomique.</p>
+</div>
+<div class="paragraph">
+<p>En effet, l&#8217;AZERTY date de l&#8217;époque des machines à
+écrire et permettait d&#8217;éviter que les marteaux de la
+machine ne s&#8217;emmêlent lorsque des professionnels
+s&#8217;en servaient à toute allure.</p>
+</div>
+<div class="paragraph">
+<p>Depuis plus de 20 ans, il existe une disposition
+clavier, ergonomique et adaptée à la langue française :
+elle a été appelée la disposition BÉPO.</p>
+</div>
+<div class="paragraph">
+<p>Le BÉPO vous permet de  limiter le mouvement du bras, de l&#8217;épaule, des poignets et des doigts, notamment
+en disposant les lettres les plus courantes du français au centre du clavier et en plaçant les moins utilisées en périphérie du clavier.</p>
+</div>
+<div class="paragraph">
+<p>5 minutes par jour pendant 2 semaines permettent
+de taper en BÉPO rapidement. De nombreux logiciels de
+dactylographie vous permettront de vous entraîner
+gratuitement : <a href="https://www.typingsoft.com/all_typing_tutors.htm">All the touch typing tutors</a></p>
+</div>
+<div class="paragraph">
+<p>Puis, pour utiliser votre clavier, vous n&#8217;aurez
+plus besoin de regarder vos mains, ce qui détendra votre
+vision, de plus, vous utiliserez tous vos
+doigts, ce qui augmentera votre vitesse de frappe
+jusqu&#8217;à 45 mots par minute.</p>
+</div>
+<div class="paragraph">
+<p>Pour installer la disposition BÉPO sur Windows, ce <a href="https://bepo.fr/wiki/Windows">site</a> vous indiquera
+la méthode à suivre.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_utilisation_dun_outil_danalyse_statique_du_code">Utilisation d&#8217;un outil d&#8217;analyse statique du code</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_qodana">Qodana</h3>
+<div class="paragraph">
+<p>Pour réaliser un vrai travail de fond sur votre code,
+si vous utilisez un IDE JetBrains, il vous sera
+possible d&#8217;utiliser Qodana, l&#8217;outil d&#8217;analyse de
+code statique.</p>
+</div>
+<div class="paragraph">
+<p>Qodana s&#8217;appuie sur les inspections natives de JetBrains, en proposant plus de 2500 inspections de
+code. Il vous permettra de détecter une grande
+variété de problèmes et peut les présenter
+sous forme de rapport.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sonarlint">Sonarlint</h3>
+<div class="paragraph">
+<p>Voici une autre solution pour obtenir le même résultat,
+qui se connecte avec la plupart des
+IDE, par un plugin, <a href="https://www.sonarsource.com/products/sonarlint/ide-login/">Sonarlint</a>. Il vous permettra
+d&#8217;écrire du code propre. Vous pourrez utiliser cet
+outil dans un contexte CI/CD en associant celui-ci à
+<a href="https://docs.sonarsource.com/sonarqube/latest/try-out-sonarqube/">SonarQube</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le but de cet ouvrage est de vous délivrer l&#8217;essentiel à
+connaître pour écrire du code propre.</p>
+</div>
+<div class="paragraph">
+<p>Le principe a été étendu à la posture, car
+elle influence grandement la qualité du code,
+bien que ce soit de manière indirecte.</p>
+</div>
+<div class="paragraph">
+<p>J&#8217;espère vraiment que ce document vous aura plu et
+qu&#8217;il ne vous aura pas été pénible de le lire.</p>
+</div>
+<div class="paragraph">
+<p>Si vous avez des remarques ou des
+commentaires, vous pouvez me les envoyer à
+l&#8217;adresse suivante <a href="mailto:romain@boyrie.email">romain@boyrie.email</a>.</p>
+</div>
+<div class="paragraph">
+<p>Il ne me reste plus qu&#8217;à vous souhaiter « Bon Code ! »</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-04-08 11:10:04 +0200
+</div>
+</div>
+<script>
+;(function () { /*! Asciidoctor Tabs | Copyright (c) 2018-present Dan Allen | MIT License */
+  'use strict'
+
+  var config = (document.currentScript || {}).dataset || {}
+  var forEach = Array.prototype.forEach
+
+  init(document.querySelectorAll('.tabs'))
+
+  function init (tabsBlocks) {
+    if (!tabsBlocks.length) return
+    forEach.call(tabsBlocks, function (tabs) {
+      var syncIds = tabs.classList.contains('is-sync') ? {} : undefined
+      var tablist = tabs.querySelector('.tablist ul')
+      tablist.setAttribute('role', 'tablist')
+      var start
+      forEach.call(tablist.querySelectorAll('li'), function (tab, idx) {
+        tab.tabIndex = -1
+        tab.setAttribute('role', tab.classList.add('tab') || 'tab')
+        var id, anchor, syncId
+        if (!(id = tab.id) && (anchor = tab.querySelector('a[id]'))) {
+          id = tab.id = anchor.parentNode.removeChild(anchor).id
+        }
+        var panel = id && tabs.querySelector('.tabpanel[aria-labelledby~="' + id + '"]')
+        if (!panel) return idx ? undefined : toggleSelected(tab, true) // invalid state
+        syncIds && (((syncId = tab.textContent.trim()) in syncIds) ? (syncId = undefined) : true) &&
+        (syncIds[(tab.dataset.syncId = syncId)] = tab)
+        idx || (syncIds && (start = { tab: tab, panel: panel })) ? toggleHidden(panel, true) : toggleSelected(tab, true)
+        tab.setAttribute('aria-controls', panel.id)
+        panel.setAttribute('role', 'tabpanel')
+        var onClick = syncId === undefined ? activateTab : activateTabSync
+        tab.addEventListener('click', onClick.bind({ tabs: tabs, tab: tab, panel: panel }))
+      })
+      if (!tabs.closest('.tabpanel')) {
+        forEach.call(tabs.querySelectorAll('.tabpanel table.tableblock'), function (table) {
+          var container = Object.assign(document.createElement('div'), { className: 'tablecontainer' })
+          table.parentNode.insertBefore(container, table).appendChild(table)
+        })
+      }
+      if (start) {
+        var syncGroupId
+        for (var i = 0, lst = tabs.classList, len = lst.length, className; i !== len; i++) {
+          if (!(className = lst.item(i)).startsWith('data-sync-group-id=')) continue
+          tabs.dataset.syncGroupId = syncGroupId = lst.remove(className) || className.slice(19).replace(/\u00a0/g, ' ')
+          break
+        }
+        if (syncGroupId === undefined) tabs.dataset.syncGroupId = syncGroupId = Object.keys(syncIds).sort().join('|')
+        var preferredSyncId = 'syncStorageKey' in config &&
+          window[(config.syncStorageScope || 'local') + 'Storage'].getItem(config.syncStorageKey + '-' + syncGroupId)
+        var tab = preferredSyncId && syncIds[preferredSyncId]
+        tab && Object.assign(start, { tab: tab, panel: document.getElementById(tab.getAttribute('aria-controls')) })
+        toggleSelected(start.tab, true) || toggleHidden(start.panel, false)
+      }
+    })
+    onHashChange()
+    toggleClassOnEach(tabsBlocks, 'is-loading', 'remove')
+    window.setTimeout(toggleClassOnEach.bind(null, tabsBlocks, 'is-loaded', 'add'), 0)
+    window.addEventListener('hashchange', onHashChange)
+  }
+
+  function activateTab (e) {
+    var tab = this.tab
+    var tabs = this.tabs || (this.tabs = tab.closest('.tabs'))
+    var panel = this.panel || (this.panel = document.getElementById(tab.getAttribute('aria-controls')))
+    querySelectorWithSiblings(tabs, '.tablist .tab', 'tab').forEach(function (el) {
+      toggleSelected(el, el === tab)
+    })
+    querySelectorWithSiblings(tabs, '.tabpanel', 'tabpanel').forEach(function (el) {
+      toggleHidden(el, el !== panel)
+    })
+    if (!this.isSync && 'syncStorageKey' in config && 'syncGroupId' in tabs.dataset) {
+      var storageKey = config.syncStorageKey + '-' + tabs.dataset.syncGroupId
+      window[(config.syncStorageScope || 'local') + 'Storage'].setItem(storageKey, tab.dataset.syncId)
+    }
+    if (!e) return
+    var loc = window.location
+    var hashIdx = loc.hash ? loc.href.indexOf('#') : -1
+    if (~hashIdx) window.history.replaceState(null, '', loc.href.slice(0, hashIdx))
+    e.preventDefault()
+  }
+
+  function activateTabSync (e) {
+    activateTab.call(this, e)
+    var thisTabs = this.tabs
+    var thisTab = this.tab
+    var initialY = thisTabs.getBoundingClientRect().y
+    forEach.call(document.querySelectorAll('.tabs'), function (tabs) {
+      if (tabs === thisTabs || tabs.dataset.syncGroupId !== thisTabs.dataset.syncGroupId) return
+      querySelectorWithSiblings(tabs, '.tablist .tab', 'tab').forEach(function (tab) {
+        if (tab.dataset.syncId === thisTab.dataset.syncId) activateTab.call({ tabs: tabs, tab: tab, isSync: true })
+      })
+    })
+    var shiftedBy = thisTabs.getBoundingClientRect().y - initialY
+    if (shiftedBy && (shiftedBy = Math.round(shiftedBy))) window.scrollBy({ top: shiftedBy, behavior: 'instant' })
+  }
+
+  function querySelectorWithSiblings (scope, selector, siblingClass) {
+    var el = scope.querySelector(selector)
+    if (!el) return []
+    var result = [el]
+    while ((el = el.nextElementSibling) && el.classList.contains(siblingClass)) result.push(el)
+    return result
+  }
+
+  function toggleClassOnEach (elements, className, method) {
+    forEach.call(elements, function (el) {
+      el.classList[method](className)
+    })
+  }
+
+  function toggleHidden (el, state) {
+    el.classList[(el.hidden = state) ? 'add' : 'remove']('is-hidden')
+  }
+
+  function toggleSelected (el, state) {
+    el.setAttribute('aria-selected', '' + state)
+    el.classList[state ? 'add' : 'remove']('is-selected')
+    el.tabIndex = state ? 0 : -1
+  }
+
+  function onHashChange () {
+    var id = window.location.hash.slice(1)
+    if (!id) return
+    var tab = document.getElementById(~id.indexOf('%') ? decodeURIComponent(id) : id)
+    if (!(tab && tab.classList.contains('tab'))) return
+    'syncId' in tab.dataset ? activateTabSync.call({ tab: tab }) : activateTab.call({ tab: tab })
+  }
+})()
+</script>
+</body>
+</html>
